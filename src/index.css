@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+@theme {
+  --color-void: #070706;
+  --color-ink: #0c0b0a;
+  --color-charcoal: #161513;
+  --color-smoke: #1f1d1a;
+  --color-ivory: #f2ede4;
+  --color-mist: #a9a298;
+  --color-champagne: #c8a96a;
+  --color-champagne-light: #dcc28d;
+  --color-bronze: #9a7447;
+
+  --font-serif: "Cormorant Garamond", "Times New Roman", Georgia, serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --ease-cine: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-mask: cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-ink font-sans text-ivory antialiased;
+    overflow-x: clip;
+  }
+
+  html.has-custom-cursor,
+  html.has-custom-cursor * {
+    cursor: none !important;
+  }
+
+  section[id] {
+    scroll-margin-top: 0;
+  }
+
+  ::selection {
+    background: var(--color-champagne);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 1px solid var(--color-champagne);
+    outline-offset: 4px;
+  }
+
+  img {
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+}
+
+@layer components {
+  .frame {
+    @apply mx-auto w-full max-w-[1440px] px-5 sm:px-8 lg:px-14 xl:pr-24;
+  }
+
+  .label {
+    @apply font-sans text-[10.5px] font-medium tracking-[0.42em] text-champagne uppercase;
+  }
+
+  .display {
+    @apply font-serif leading-[0.92] font-light tracking-[-0.015em];
+  }
+
+  .btn-gold {
+    @apply inline-flex items-center gap-3 bg-champagne px-7 py-3.5 text-[12px] font-semibold tracking-[0.14em] text-ink uppercase transition-colors duration-500 hover:bg-champagne-light;
+  }
+
+  .btn-line {
+    @apply inline-flex items-center gap-3 border border-ivory/25 px-7 py-3.5 text-[12px] font-medium tracking-[0.14em] text-ivory uppercase transition-colors duration-500 hover:border-champagne hover:text-champagne;
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Fine film grain over imagery — static, so it costs nothing per frame. */
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.08;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.6); opacity: 0.9; }
+  100% { transform: scale(2.6); opacity: 0; }
+}
+
+@keyframes scroll-line {
+  0% { transform: translateY(-100%); }
+  60%, 100% { transform: translateY(220%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
