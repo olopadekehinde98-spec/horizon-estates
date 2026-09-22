@@ -68,7 +68,7 @@ export function Navbar() {
               <li key={l.href}>
                 <a
                   href={l.href}
-                  className={`group relative py-2 text-[12.5px] tracking-[0.08em] transition-colors duration-500 ${
+                  className={`group relative py-3 text-[12.5px] tracking-[0.08em] transition-colors duration-500 ${
                     active === l.href ? 'text-ivory' : 'text-ivory/60 hover:text-ivory'
                   }`}
                 >

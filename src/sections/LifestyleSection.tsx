@@ -67,9 +67,9 @@ export function LifestyleSection() {
             >
               <Img photo={f.photo} sizes="(min-width: 768px) 30vw, 48vw" widths={[400, 700, 1000]} className="transition-transform duration-[1400ms] ease-cine group-hover:scale-[1.08]" />
               <div className="absolute inset-0 bg-gradient-to-t from-void/85 via-void/10 to-transparent" />
-              <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-4 md:p-5">
-                <p className="text-[11px] tracking-[0.22em] text-ivory uppercase">{f.name}</p>
-                <span className="text-[10px] text-champagne tabular-nums">0{i + 1}</span>
+              <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-3.5 sm:p-4 md:p-5">
+                <p className="min-w-0 text-[10px] leading-snug tracking-[0.18em] text-ivory uppercase sm:text-[11px] sm:tracking-[0.22em]">{f.name}</p>
+                <span className="shrink-0 text-[10px] text-champagne tabular-nums">0{i + 1}</span>
               </div>
               <span className="absolute inset-x-5 bottom-0 h-px origin-left scale-x-0 bg-champagne transition-transform duration-700 ease-cine group-hover:scale-x-100" />
             </motion.li>

@@ -28,7 +28,7 @@ const Dots = memo(function Dots() {
       if (row[c] === '1') circles.push(<circle key={`${r}-${c}`} cx={c * CELL + CELL / 2} cy={r * CELL + CELL / 2} r={2.1} />)
     }
   })
-  return <g fill="rgba(242,237,228,0.2)">{circles}</g>
+  return <g fill="rgba(242,237,228,0.24)">{circles}</g>
 })
 
 /** Section 08 — the camera travels the globe from one destination to the next. */
@@ -64,7 +64,7 @@ export function DestinationExplorer() {
 
   // Camera: fit the map to the stage width, zoom in, and place the active city at the focal point.
   const base = size.w / MW
-  const zoom = desktop ? 1.55 : 2.3
+  const zoom = desktop ? 1.55 : 3.4
   const s = base * zoom
   const focus = { x: size.w * (desktop ? 0.64 : 0.5), y: size.h * (desktop ? 0.44 : 0.5) }
   const pt = project(d.lat, d.lon)
@@ -110,12 +110,13 @@ export function DestinationExplorer() {
               const q = project(dest.lat, dest.lon)
               const on = k === i
               return (
-                <g key={dest.city} transform={`translate(${q.x} ${q.y})`}>
+                // Counter-scale so markers and labels keep a constant on-screen size.
+                <g key={dest.city} transform={`translate(${q.x} ${q.y}) scale(${1 / s})`}>
                   {on && (
-                    <circle r={10} fill="none" stroke="#c8a96a" strokeWidth={1} vectorEffect="non-scaling-stroke" style={{ transformBox: 'fill-box', transformOrigin: 'center', animation: 'pulse-ring 2.4s ease-out infinite' }} />
+                    <circle r={16} fill="none" stroke="#c8a96a" strokeWidth={1} vectorEffect="non-scaling-stroke" style={{ transformBox: 'fill-box', transformOrigin: 'center', animation: 'pulse-ring 2.4s ease-out infinite' }} />
                   )}
-                  <circle r={on ? 4.5 : 3} fill={on ? '#c8a96a' : 'rgba(200,169,106,0.55)'} />
-                  <text x={8} y={3} fontSize={on ? 9 : 6.5} fill={on ? '#f2ede4' : 'rgba(242,237,228,0.45)'} fontFamily="Manrope, sans-serif" letterSpacing={1.2}>
+                  <circle r={on ? 5 : 3.5} fill={on ? '#c8a96a' : 'rgba(200,169,106,0.55)'} />
+                  <text x={11} y={4} fontSize={on ? 12 : 10} fill={on ? '#f2ede4' : 'rgba(242,237,228,0.45)'} fontFamily="Manrope, sans-serif" letterSpacing={1.6} fontWeight={on ? 600 : 400}>
                     {dest.city.toUpperCase()}
                   </text>
                 </g>

@@ -21,7 +21,7 @@ function Header() {
         <p className="text-[14px] leading-[1.8] text-ivory/65">
           From breathtaking coastlines to serene countryside retreats, explore extraordinary estates in the world’s most desirable destinations.
         </p>
-        <a href="#locations" className="group mt-5 inline-flex items-center gap-3 text-[11.5px] tracking-[0.18em] text-champagne uppercase">
+        <a href="#locations" className="group mt-3 inline-flex items-center gap-3 py-3 text-[11.5px] tracking-[0.18em] text-champagne uppercase">
           View all estates
           <ArrowRight className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1" strokeWidth={1.5} />
         </a>

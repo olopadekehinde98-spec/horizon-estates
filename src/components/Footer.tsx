@@ -85,10 +85,10 @@ export function Footer() {
             {columns.map((c) => (
               <div key={c.title}>
                 <h3 className="mb-6 text-[13px] font-medium text-ivory">{c.title}</h3>
-                <ul className="space-y-3.5 text-[13.5px]">
+                <ul className="space-y-1 text-[13.5px]">
                   {c.links.map(([label, href]) => (
                     <li key={label}>
-                      <a href={href} className="transition-colors duration-500 hover:text-champagne">
+                      <a href={href} className="inline-block py-2 transition-colors duration-500 hover:text-champagne">
                         {label}
                       </a>
                     </li>
