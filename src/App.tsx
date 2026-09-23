@@ -5,6 +5,7 @@ import { Footer } from './components/Footer'
 import { Intro } from './components/Intro'
 import { Navbar } from './components/Navbar'
 import { Overlays } from './components/Overlays'
+import { PortfolioBadge } from './components/PortfolioBadge'
 import { SectionProgress } from './components/SectionProgress'
 import { hero } from './data/content'
 import { img } from './lib/image'
@@ -87,6 +88,7 @@ export default function App() {
         </main>
         <Footer />
         <Overlays />
+        <PortfolioBadge />
         <CustomCursor />
       </UIContext.Provider>
     </MotionConfig>
