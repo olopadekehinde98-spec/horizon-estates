@@ -18,7 +18,7 @@ export function Logo({ className = '', size = 'sm' }: Props) {
       <LogoMark className={`${big ? 'h-12 w-12' : 'h-8 w-8'} text-champagne`} />
       <span className="flex flex-col leading-none">
         <span className={`font-serif ${big ? 'text-[2rem]' : 'text-[1.28rem]'} font-medium tracking-[0.2em] text-ivory`}>HORIZON</span>
-        <span className={`${big ? 'mt-1.5 text-[10px]' : 'mt-1 text-[8px]'} self-center font-sans tracking-[0.62em] text-mist`}>ESTATES</span>
+        <span className={`${big ? 'mt-1.5 text-[10px]' : 'mt-1 text-[9px]'} self-center font-sans tracking-[0.62em] text-mist`}>ESTATES</span>
       </span>
     </span>
   )

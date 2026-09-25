@@ -92,7 +92,7 @@ export function Navbar() {
             >
               <Search className="h-[18px] w-[18px]" strokeWidth={1.4} />
             </button>
-            <a href="#footer" className="hidden text-[12.5px] tracking-[0.08em] text-ivory/70 transition-colors hover:text-ivory xl:inline">
+            <a href="#footer" className="hidden py-2.5 text-[12.5px] tracking-[0.08em] text-ivory/70 transition-colors hover:text-ivory xl:inline-block">
               Sign In
             </a>
             <button
