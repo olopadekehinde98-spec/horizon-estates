@@ -1,32 +1,33 @@
-# React + TypeScript + Vite
+# Horizon Estates
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Cinematic real-estate showcase — a single scroll that walks a buyer from the gate to the private collection. React 19 + TypeScript + Vite, Tailwind CSS v4, Framer Motion, Lucide icons.
 
-Currently, two official plugins are available:
+**Live:** https://horizon-estates-tau.vercel.app
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+npm run dev      # http://localhost:5173
+npm run build    # production build in dist/
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## The journey
+
+`src/sections/` holds one file per chapter, in scroll order: `Arrival` → `CinematicHero` → `EstateScroller` → `EnterHome` → `InteriorExperience` → `LifestyleSection` → `FeaturedEstate` → `ArchitectureStory` → `ExperienceExplorer` → `DestinationExplorer` → `PrivateCollection` → `FinalCTA`, with `Intro` playing the title card before the first paint.
+
+Two of these carry most of the choreography. `EstateScroller` pins itself and moves the estates sideways as you scroll down on a desktop, and swaps to a swipeable gallery on touch. `EnterHome` expands a clip-path so the façade opens into the interior.
+
+## Structure
+
+- `src/components/` — chrome and shared motion pieces: `Navbar`, `SectionProgress` (the side chapter nav), `CustomCursor`, `Magnetic`, `MaskImage`, `SplitLines`, `Reveal`, `Img`, `Overlays`, `Footer`.
+- `src/data/content.ts` — every estate, interior, experience and destination (edit content here, not in sections). `worldDots.ts` is a pre-computed land-dot grid for the destination map, generated offline so no map library ships to the browser.
+- `src/hooks/` — `useSectionProgress`, `useMediaQuery` (`useImmersive()` gates the desktop-only cinema tier).
+- `src/lib/` — `image.ts` (Unsplash CDN URLs + `srcset`), `ui.ts` (easing, scroll helpers, overlay state).
+- Design tokens live in the `@theme` block of `src/index.css` — Tailwind v4, so there is no `tailwind.config.js`.
+
+## Notes
+
+`useSectionProgress` wraps `useScroll` in an identity `useTransform`. That is deliberate: without it Framer hands scroll-linked values to the browser's native ScrollTimeline, and multi-stop ranges desync from the scroll position.
+
+Motion respects `prefers-reduced-motion` through `MotionConfig reducedMotion="user"`, and the custom cursor and pinned horizontal scroll only run on a desktop with a fine pointer.
+
+Images are served from the Unsplash CDN with a blurred low-quality placeholder behind each one; swap the photo ids in `content.ts` for the client's own photography before launch.
