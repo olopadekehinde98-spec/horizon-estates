@@ -4,6 +4,8 @@ Cinematic real-estate showcase — a single scroll that walks a buyer from the g
 
 **Live:** https://horizon-estates-tau.vercel.app
 
+![Horizon Estates](docs/hero.jpg)
+
 ```bash
 npm install
 npm run dev      # http://localhost:5173
@@ -31,3 +33,9 @@ Two of these carry most of the choreography. `EstateScroller` pins itself and mo
 Motion respects `prefers-reduced-motion` through `MotionConfig reducedMotion="user"`, and the custom cursor and pinned horizontal scroll only run on a desktop with a fine pointer.
 
 Images are served from the Unsplash CDN with a blurred low-quality placeholder behind each one; swap the photo ids in `content.ts` for the client's own photography before launch.
+
+## Screens
+
+| Iconic estates scroller | On a phone |
+| --- | --- |
+| ![Iconic estates scroller](docs/desktop.jpg) | ![Horizon Estates on a phone](docs/mobile.jpg) |
