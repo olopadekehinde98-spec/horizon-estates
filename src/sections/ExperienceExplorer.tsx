@@ -5,7 +5,7 @@ import { Img } from '../components/Img'
 import { Magnetic } from '../components/Magnetic'
 import { SplitLines } from '../components/SplitLines'
 import { experiences } from '../data/content'
-import { useImmersive } from '../hooks/useMediaQuery'
+import { useCinematic } from '../hooks/useMediaQuery'
 import { EASE, EASE_MASK, useUI } from '../lib/ui'
 
 type Experience = (typeof experiences)[number]
@@ -78,7 +78,7 @@ export function ExperienceExplorer() {
   const [active, setActive] = useState(0)
   const [detail, setDetail] = useState<number | null>(null)
   const closeDetail = useCallback(() => setDetail(null), [])
-  const immersive = useImmersive()
+  const immersive = useCinematic()
   const mx = useSpring(useMotionValue(0), { stiffness: 50, damping: 20 })
   const my = useSpring(useMotionValue(0), { stiffness: 50, damping: 20 })
 

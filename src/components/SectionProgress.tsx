@@ -32,12 +32,12 @@ export function SectionProgress() {
         animate={{ opacity: introDone && !atFooter ? 1 : 0 }}
         transition={{ duration: 0.8 }}
       >
-        <ol className="flex flex-col gap-4">
+        <ol className="flex flex-col gap-1">
           {chapters.map((c, i) => {
             const on = i === active
             return (
               <li key={c.id}>
-                <a href={`#${c.id}`} className="group flex items-center justify-end gap-3" aria-current={on ? 'true' : undefined}>
+                <a href={`#${c.id}`} className="group flex items-center justify-end gap-3 py-2.5" aria-current={on ? 'true' : undefined}>
                   <span
                     className={`text-[10px] tracking-[0.2em] uppercase transition-all duration-500 [text-shadow:0_1px_8px_rgba(0,0,0,0.6)] ${
                       'translate-x-2 text-ivory opacity-0 group-hover:translate-x-0 group-hover:opacity-100'

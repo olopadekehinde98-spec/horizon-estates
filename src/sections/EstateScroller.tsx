@@ -4,7 +4,7 @@ import { useLayoutEffect, useRef, useState } from 'react'
 import { Img } from '../components/Img'
 import { SplitLines } from '../components/SplitLines'
 import { estates, type Estate } from '../data/content'
-import { useImmersive } from '../hooks/useMediaQuery'
+import { useCinematic } from '../hooks/useMediaQuery'
 import { useSectionProgress } from '../hooks/useSectionProgress'
 import { useUI } from '../lib/ui'
 
@@ -186,6 +186,6 @@ function SwipeGallery() {
 }
 
 export function EstateScroller() {
-  const immersive = useImmersive()
+  const immersive = useCinematic()
   return immersive ? <StickyScroller /> : <SwipeGallery />
 }
